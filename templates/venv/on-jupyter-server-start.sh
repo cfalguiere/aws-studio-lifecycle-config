@@ -15,16 +15,20 @@ else
     git -C "${HOME}/env-${SUBST_ENV_NAME}" pull 
 fi
 
-pip install --user virtualenv
+python -m venv "${HOME}/.virtualenvs/${SUBST_ENV_NAME}"  
 
-virtualenv "${SUBST_ENV_NAME}"
+source "${HOME}/.virtualenvs/${SUBST_ENV_NAME}/bin/activate" 
 
-source "${SUBST_ENV_NAME}/bin/activate" 
+which python
+
+python --version
+
+"${HOME}/.virtualenvs/${SUBST_ENV_NAME}/bin/python" -m pip install --upgrade pip
 
 # setup the required env
-pip install "${HOME}/env-${SUBST_ENV_NAME}/venv-config/requirements.txt" 
+pip install -r "${HOME}/env-${SUBST_ENV_NAME}/venv-config/requirements.txt" 
 
 
-# register as Jupyter kernel
+# register as Jupyter kernel with the name of this env
 python -m ipykernel install --user --name="${SUBST_ENV_NAME}"
 
