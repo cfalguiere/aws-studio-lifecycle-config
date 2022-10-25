@@ -28,7 +28,7 @@ echo "will create a LLC $lcc_name for venv $env_name in region $aws_region"
 script_dir=$(dirname "$programname")
 echo "script_dir=${script_dir}"
 
-export SCRIPT_TEMPLATE_NAME='templates/venv/on-jupyter-server-start.sh'
+export SCRIPT_TEMPLATE_NAME='templates/venv-conda/on-jupyter-server-start.sh'
 # export SCRIPT_TYPE="JupyterServer"
 export SCRIPT_TYPE="KernelGateway"
 

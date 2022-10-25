@@ -15,15 +15,11 @@ else
     git -C "${HOME}/env-${SUBST_ENV_NAME}" pull 
 fi
 
-pip install --user virtualenv
-
-virtualenv "${SUBST_ENV_NAME}"
-
-source "${SUBST_ENV_NAME}/bin/activate" 
-
 # setup the required env
-pip install "${HOME}/env-${SUBST_ENV_NAME}/venv-config/requirements.txt" 
-
+# WARNING expects the name given as parameter to be the name in the config file
+echo "Creating venv in $SUBST_ENV_NAME"
+conda env create -f "${HOME}/env-${SUBST_ENV_NAME}/venv-config/conda-env.yml" --force
+# --verbose 
 
 # register as Jupyter kernel
 python -m ipykernel install --user --name="${SUBST_ENV_NAME}"

@@ -27,6 +27,8 @@ attach to a user
 - check repo has been copied onto the user home
 - use in notebook: jupyter kernelspec list
 
+Log group /aws/sagemaker/studio esp. Gateway
+
 ## Clean up 
 
 conda env remove --name iris
