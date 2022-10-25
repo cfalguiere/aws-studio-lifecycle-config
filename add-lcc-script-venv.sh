@@ -24,6 +24,7 @@ echo "will create a LLC $lcc_name for venv $env_name in region $aws_region"
 
 
 # initialisations
+
 script_dir=$(dirname "$programname")
 echo "script_dir=${script_dir}"
 
@@ -32,10 +33,12 @@ export SCRIPT_TEMPLATE_NAME='templates/venv/on-jupyter-server-start.sh'
 export SCRIPT_TYPE="KernelGateway"
 
 # create a temp dir 
+
 build_dir="${script_dir}/build"
 mkdir -p $build_dir
 
 # generate the LCC content document from a template
+
 export SUBST_ENV_NAME="$env_name"
 export SUBST_ENV_URL="https://github.com/cfalguiere/aws-studio-lifecycle-config-for-${env_name}.git"
 lcc_script_name="${build_dir}/script.sh"
@@ -47,6 +50,7 @@ cat ${lcc_script_name}
 echo "generated script ----- END -----"
 
 # encode the LCC content document
+
 LCC_CONTENT=$( openssl base64 -A -in ${lcc_script_name} )
 
 aws sagemaker --region $aws_region create-studio-lifecycle-config \
