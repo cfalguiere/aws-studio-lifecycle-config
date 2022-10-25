@@ -25,7 +25,7 @@ attach to a user
 - Enter the studio and start a notebook, choose the LCC in the dropdown list
 - check env is created
 - check repo has been copied onto the user home
-
+- use in notebook: jupyter kernelspec list
 
 ## Clean up 
 

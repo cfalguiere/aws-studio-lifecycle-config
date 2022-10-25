@@ -22,6 +22,5 @@ conda env create -f "${HOME}/env-${SUBST_ENV_NAME}/venv-config/conda-env.yml" --
 # --verbose 
 
 # register as Jupyter kernel
-python -m ipykernel install --name="${SUBST_ENV_NAME}"
-# --user 
+python -m ipykernel install --user --name="${SUBST_ENV_NAME}"
 
