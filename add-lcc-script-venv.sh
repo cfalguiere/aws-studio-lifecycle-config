@@ -28,8 +28,8 @@ script_dir=$(dirname "$programname")
 echo "script_dir=${script_dir}"
 
 export SCRIPT_TEMPLATE_NAME='templates/venv/on-jupyter-server-start.sh'
-export SCRIPT_TYPE="JupyterServer"
-# export SCRIPT_TYPE="KernelGateway"
+# export SCRIPT_TYPE="JupyterServer"
+export SCRIPT_TYPE="KernelGateway"
 
 # create a temp dir 
 build_dir="${script_dir}/build"
