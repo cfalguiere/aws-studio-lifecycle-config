@@ -28,7 +28,7 @@ echo "will create a LLC $lcc_name for venv $env_name in region $aws_region"
 script_dir=$(dirname "$programname")
 echo "script_dir=${script_dir}"
 
-export SCRIPT_TEMPLATE_NAME='templates/venv/on-jupyter-server-start.sh'
+export SCRIPT_TEMPLATE_NAME='templates/venv-nox/on-kernel-gateway-start.sh'
 # export SCRIPT_TYPE="JupyterServer"
 export SCRIPT_TYPE="KernelGateway"
 
@@ -58,3 +58,4 @@ aws sagemaker --region $aws_region create-studio-lifecycle-config \
   --studio-lifecycle-config-name $lcc_name \
   --studio-lifecycle-config-content $LCC_CONTENT \
   --studio-lifecycle-config-app-type $SCRIPT_TYPE
+  
