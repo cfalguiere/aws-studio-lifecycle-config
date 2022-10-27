@@ -26,7 +26,7 @@ python --version
 "${HOME}/.virtualenvs/${SUBST_ENV_NAME}/bin/python" -m pip install --upgrade pip
 
 # setup the required env
-pip install -r "${HOME}/env-${SUBST_ENV_NAME}/venv-config/requirements.txt" 
+pip install -U -r "${HOME}/env-${SUBST_ENV_NAME}/venv-config/requirements.txt" 
 
 
 # register as Jupyter kernel with the name of this env
