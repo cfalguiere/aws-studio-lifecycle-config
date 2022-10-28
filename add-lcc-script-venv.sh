@@ -8,17 +8,19 @@ set -eux
 programname=$0
 
 function usage {
-    echo "usage: $programname name region"
+    echo "usage: $programname name repo-name region"
     exit 1
 }
 
-if [$# -ne 2]; 
+if [$# -ne 3]; 
     then usage
 fi
 
 env_name="$1"
-lcc_name="lcc-$env_name"
-aws_region="$2"
+repo_name="$2"
+TS=$(date "+%Y%m%d-%H%M%S")
+lcc_name="lcc-kg-${env_name}-${TS}"
+aws_region="$3"
 
 echo "will create a LLC $lcc_name for venv $env_name in region $aws_region"
 
@@ -28,7 +30,7 @@ echo "will create a LLC $lcc_name for venv $env_name in region $aws_region"
 script_dir=$(dirname "$programname")
 echo "script_dir=${script_dir}"
 
-export SCRIPT_TEMPLATE_NAME='templates/venv-nox/on-kernel-gateway-start.sh'
+export SCRIPT_TEMPLATE_NAME='templates/venv/on-kernel-gateway-start.sh'
 # export SCRIPT_TYPE="JupyterServer"
 export SCRIPT_TYPE="KernelGateway"
 
@@ -39,7 +41,8 @@ mkdir -p $build_dir
 
 # generate the LCC content document from a template
 
-export SUBST_ENV_NAME="$env_name"
+export SUBST_ENV_NAME="$env_name-${TS}"
+export SUBST_REPO_NAME="$repo_name"
 export SUBST_ENV_URL="https://github.com/cfalguiere/aws-studio-lifecycle-config-for-${env_name}.git"
 lcc_script_name="${build_dir}/script.sh"
 

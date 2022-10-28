@@ -8,4 +8,4 @@ echo "SCRIPT_DIR=${SCRIPT_DIR}"
 
 CMD="${SCRIPT_DIR}/add-lcc-script-venv.sh"
 
-$CMD iris eu-west-3
+$CMD iris aws-studio-lifecycle-config-for-iris-orig eu-west-3
